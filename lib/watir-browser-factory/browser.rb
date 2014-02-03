@@ -19,17 +19,18 @@ module Watir
         b
       end
 
-      def smart_start(url, browser = :firefox, *args)
-        if ! ENV["LOCAL"]
+      def smart_start(url,caps,*args)
+        if caps[:platform].nil?
           #if ! ENV["LOCAL"] && SauceWhisk::Sauce.service_status[:service_operational]
           b = Watir::Browser.new(:remote,:url => "http://#{ENV['SAUCE_USERNAME']}:#{ENV['SAUCE_ACCESS_KEY']}@ondemand.saucelabs.com:80/wd/hub",
-          :desired_capabilities =>
-          {
-            :browserName => :chrome,
-            :platform => "Linux",
-            :version => "30",
-            :name => "This be the name."
-          })
+          :desired_capabilities => caps
+          #{
+            # :browserName => :chrome,
+            # :platform => "Linux",
+            # :version => "30",
+            # :name => "This be the name."
+          #}
+          )
         else
           puts "Running locally"
           b = Watir::Browser.new(:firefox)
