@@ -1,1 +1,1 @@
-require 'watir/browser/factory'
+require 'watir-browser-factory/browser'
