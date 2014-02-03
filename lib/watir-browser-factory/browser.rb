@@ -13,11 +13,28 @@ module Watir
       # @return [Watir::Browser]
       #
       def start(url, browser = :firefox, *args)
-        puts "Doing my own"
         b = new(browser, *args)
         b.goto url
 
         b
+      end
+
+      def auto_start
+        if ! ENV["LOCAL"]
+          #if ! ENV["LOCAL"] && SauceWhisk::Sauce.service_status[:service_operational]
+          Watir::Browser.new(:remote,:url => "http://dfranko:6ca5782d-8b84-4380-bff5-966c21b18f92@ondemand.saucelabs.com:80/wd/hub",
+          :desired_capabilities =>
+          {
+            :browserName => :chrome,
+            :platform => "Linux",
+            :version => "30",
+            :name => "This be the name #{Time.now.to_s}"
+          })
+        else
+          puts "Running locally"
+          Watir::Browser.new(b)
+        end
+
       end
     end
   end # Browser
