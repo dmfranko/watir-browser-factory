@@ -19,7 +19,7 @@ module Watir
         b
       end
 
-      def auto_start
+      def smart_start(url, browser = :firefox, *args)
         if ! ENV["LOCAL"]
           #if ! ENV["LOCAL"] && SauceWhisk::Sauce.service_status[:service_operational]
           b = Watir::Browser.new(:remote,:url => "http://dfranko:6ca5782d-8b84-4380-bff5-966c21b18f92@ondemand.saucelabs.com:80/wd/hub",
