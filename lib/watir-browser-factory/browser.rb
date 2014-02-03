@@ -1,3 +1,5 @@
+require 'watir-webdriver'
+
 module Watir
   class Browser
     class << self
