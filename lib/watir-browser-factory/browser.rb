@@ -34,7 +34,9 @@ module Watir
           puts "Running locally"
           b = Watir::Browser.new(:firefox)
         end
-        b.goto url
+          b.goto url
+          
+          b
       end
     end
   end # Browser
