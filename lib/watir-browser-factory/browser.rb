@@ -1,20 +1,24 @@
 module Watir
   class Browser
-    super
-    def initialize(browser = :firefox, *args)
-      puts "My version"
-      case browser
-      when Symbol, String
-        @driver = Selenium::WebDriver.for browser.to_sym, *args
-      when Selenium::WebDriver::Driver
-        @driver = browser
-      else
-      raise ArgumentError, "expected Symbol or Selenium::WebDriver::Driver, got #{browser.class}"
-      end
+    class << self
+      #
+      # Creates a Watir::Browser instance and goes to URL.
+      #
+      # @example
+      #   browser = Watir::Browser.start "www.google.com", :chrome
+      #   #=> #<Watir::Browser:0x..fa45a499cb41e1752 url="http://www.google.com" title="Google">
+      #
+      # @param [String] url
+      # @param [Symbol, Selenium::WebDriver] browser :firefox, :ie, :chrome, :remote or Selenium::WebDriver instance
+      # @return [Watir::Browser]
+      #
+      def start(url, browser = :firefox, *args)
+        puts "Doing my own"
+        b = new(browser, *args)
+        b.goto url
 
-      @error_checkers = []
-      @current_frame  = nil
-      @closed         = false
+        b
+      end
     end
   end # Browser
 end # Watir
