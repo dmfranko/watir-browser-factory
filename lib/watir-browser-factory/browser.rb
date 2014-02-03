@@ -24,10 +24,9 @@ module Watir
         # Don't like how long service status takes now.
 
         if caps[:platform] # && SauceWhisk::Sauce.service_status[:service_operational]
-          b = Watir::Browser.new(:remote,
+          b = Watir::Browser.new(*args,:remote,
           :url => "http://#{ENV['SAUCE_USERNAME']}:#{ENV['SAUCE_ACCESS_KEY']}@ondemand.saucelabs.com:80/wd/hub",
-          :desired_capabilities => caps
-          )
+          :desired_capabilities => caps)
         else
           puts "Running locally"
           b = Watir::Browser.new(:firefox)
