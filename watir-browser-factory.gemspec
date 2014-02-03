@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'watir/browser/factory/version'
+require 'watir-browser-factory/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "watir-browser-factory"
-  spec.version       = "1.0"
+  spec.version       = Watir::Browser::Factory::VERSION
   spec.authors       = ["Dan Franko"]
   spec.email         = ["dfranko@gmail.com"]
   spec.description   = %q{Select appropriate browser local or sauce for execution}
