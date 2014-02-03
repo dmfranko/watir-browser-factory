@@ -20,7 +20,7 @@ module Watir
       end
 
       def smart_start(url,caps,*args)
-        if caps[:platform].nil?
+        if caps[:platform]
           #if ! ENV["LOCAL"] && SauceWhisk::Sauce.service_status[:service_operational]
           b = Watir::Browser.new(:remote,:url => "http://#{ENV['SAUCE_USERNAME']}:#{ENV['SAUCE_ACCESS_KEY']}@ondemand.saucelabs.com:80/wd/hub",
           :desired_capabilities => caps
