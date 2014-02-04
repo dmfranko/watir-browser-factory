@@ -6,7 +6,7 @@ module Watir
         # Don't like how long service status takes now.
 
         # Need to work args back in.
-        if caps[:platform] # && SauceWhisk::Sauce.service_status[:service_operational]
+        if caps[:os] # && SauceWhisk::Sauce.service_status[:service_operational]
           b = Watir::Browser.new(:remote,
           :url => "http://#{ENV['SAUCE_USERNAME']}:#{ENV['SAUCE_ACCESS_KEY']}@ondemand.saucelabs.com:80/wd/hub",
           :desired_capabilities => caps)
