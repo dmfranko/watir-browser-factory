@@ -12,7 +12,7 @@ module Watir
           :desired_capabilities => caps)
         else
           puts "Running locally"
-          b = Watir::Browser.new(:firefox)
+          b = Watir::Browser.new(caps[:browserName])
         end
       end
     end
